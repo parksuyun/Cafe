@@ -1,0 +1,56 @@
+public class Barista {
+    private int beanCount;
+    private int milk;
+    private int cashBox;
+    private int coffeePrice;
+
+    public Barista() {
+        coffeePrice = 3000;
+        beanCount = 5;
+        milk = 2;
+        cashBox = 0;
+    }
+
+    public Barista(int coffeePrice, int beanCount) {
+        this.beanCount = beanCount;
+        milk = 2;
+        cashBox = 0;
+    }
+
+    public int getCoffeePrice() {
+        return coffeePrice;
+    }
+
+    public boolean checkCoffee() {
+        if (beanCount > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public String makeCoffee(String menuName) {
+        beanCount--;
+        System.out.println("[바리스타] 제조가 완료되었습니다. 커피 원두는" + beanCount + "남았습니다.");
+        return "아메리카노";
+    }
+
+    public void takeCoffee() {
+
+    }
+
+    public String receiveOrder(String menuName, int payment) {
+        System.out.println("[바리스타] 주문을 확인했습니다.");
+
+        if(!checkCoffee()) {
+            System.out.println("원두가 없어서 주문이 불가능합니다.");
+            return "Error";
+        }
+
+        cashBox =cashBox +payment;
+        System.out.println("[바리스타] 잔고는 "+cashBox +"원 입니다.");
+
+        String madeCoffee = makeCoffee(menuName);
+        return "Error";
+    }
+}

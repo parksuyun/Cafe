@@ -1,0 +1,38 @@
+public class Kiosk {
+    private int number;
+    private String[] menuList;
+    private int coffeePrice;
+    private int insertMoney;
+
+    public Kiosk() {
+        number = 1;
+        String[] menuList = {"아메리카노", "카페라떼"};
+        coffeePrice = 3000;
+        int insertMoney = 0;
+
+    }
+
+    public Kiosk(int number, String[] menuList,int coffeePrice, int insertMoney) {
+        this.number = number;
+        this.menuList = menuList;
+        this.coffeePrice = coffeePrice;
+        this.insertMoney = insertMoney;
+    }
+
+
+    public void displayMenu() {
+
+    }
+
+    public void createOrder() {
+        System.out.println("메뉴번호: " + number + "메뉴: " + menuList + "금액: " + coffeePrice);
+
+        if(!menuList) {
+            System.out.println("없는 메뉴입니다.");
+        }
+    }
+
+    public void requestPayment(int amout) {
+
+    }
+}

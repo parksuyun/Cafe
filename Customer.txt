@@ -1,0 +1,48 @@
+public class Customer {
+    private int money;
+    private boolean hasCoffee;
+
+
+    public Customer(int money, boolean hasCoffee) {
+        this.money = money;
+        this.hasCoffee = hasCoffee;
+    }
+
+    public void print() {
+        System.out.println(money);
+        System.out.println(hasCoffee);
+    }
+
+    //잔액이 부족할 경우
+    public int pay(int coffeePrice) {
+        //return 0;
+        if(money <= coffeePrice) {
+            System.out.println("[손님]의 작액이 부족합니다.");
+            return -9;
+        }
+        money = money - coffeePrice;
+        return 0;
+    }
+
+    public void order(Barista barista, String menuName) {
+        //Barista barista = new Barista(3000,2) ;
+        System.out.println("[손님]" + menuName + " 한 잔 주세요");
+
+        int price = barista.getCoffeePrice();
+        System.out.println("[바리스타] 커피 가격은 " + price + "원 입니다." );
+
+        int paymentCheck = pay(price);
+        if ( paymentCheck == -9) {
+            return;
+        }
+        else if (paymentCheck == 0) {
+            System.out.println("[손님]" + price + "원을 지불했습니다.");
+            String coffee = barista.receiveOrder(menuName,price);
+            takeCoffee(coffee);
+        }
+    }
+
+    public void takeCoffee(String coffee) {
+        hasCoffee = true;
+    }
+}
