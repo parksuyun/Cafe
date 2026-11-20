@@ -1,28 +1,29 @@
 public class Barista {
     private int beanCount;
     private int milk;
+    private int currentOrder;
     private int cashBox;
-    private int coffeePrice;
 
     public Barista() {
-        coffeePrice = 3000;
         beanCount = 5;
         milk = 2;
+        currentOrder = 0;
         cashBox = 0;
     }
 
-    public Barista(int coffeePrice, int beanCount) {
+    public Barista(int beanCount, int milk, int currentOrder, int cashBox) {
         this.beanCount = beanCount;
-        milk = 2;
-        cashBox = 0;
+        this.milk = milk;
+        this.currentOrder = currentOrder;
+        this.cashBox = cashBox;
     }
 
-    public int getCoffeePrice() {
-        return coffeePrice;
+    public void notifyCompletion() {
+
     }
 
     public boolean checkCoffee() {
-        if (beanCount > 0) {
+        if (beanCount > 0 || milk > 0) {
             return true;
         } else {
             return false;
@@ -30,9 +31,18 @@ public class Barista {
     }
 
     public String makeCoffee(String menuName) {
-        beanCount--;
-        System.out.println("[바리스타] 제조가 완료되었습니다. 커피 원두는" + beanCount + "남았습니다.");
-        return "아메리카노";
+        if(menuName == "아메리카노") {
+            beanCount--;
+            System.out.println("[바리스타] 제조가 완료되었습니다. 커피 원두는" + beanCount + "남았습니다.");
+            return menuName;
+        }
+        else if(menuName == "카페라떼") {
+            beanCount--;
+            milk--;
+            System.out.println("[바리스타] 제조가 완료되었습니다. 커피 원두는" + beanCount + "개 남았습니다. 우유는" + milk + "개 남았습니다.");
+            return menuName;
+        }
+        return menuName;
     }
 
     public void takeCoffee() {
