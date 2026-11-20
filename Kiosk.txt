@@ -6,7 +6,7 @@ public class Kiosk {
 
     public Kiosk() {
         number = 1;
-        String[] menuList = {"아메리카노", "카페라떼"};
+        this.menuList = new String[]{"아메리카노", "카페라떼"};
         coffeePrice = 3000;
         int insertMoney = 0;
 
@@ -19,17 +19,20 @@ public class Kiosk {
         this.insertMoney = insertMoney;
     }
 
+    public int getCoffeePrice() {
+        return coffeePrice;
+    }
 
     public void displayMenu() {
 
     }
 
-    public void createOrder() {
-        System.out.println("메뉴번호: " + number + "메뉴: " + menuList + "금액: " + coffeePrice);
+    public void newOrder(String menuName) {
+        newOrder(number,menuName, coffeePrice);
+    }
 
-        if(!menuList) {
-            System.out.println("없는 메뉴입니다.");
-        }
+    public void createOrder() {
+
     }
 
     public void requestPayment(int amout) {
